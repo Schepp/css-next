@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>CSS Next</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/css-next.css">
+  <link rel="stylesheet" href="css/extra-styles.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)" href="lib/css/xcode.css">
+  <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="lib/css/ir-black.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+<div class="reveal">
+
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section data-markdown="markdown/start.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/convenience.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/sizing.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/a11y.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/scrolling.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/animations.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/architecture.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/layout.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/rendering.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+    <section data-markdown="markdown/end.md"
+             data-separator="^-----\r?\n"
+             data-separator-vertical="^---\r?\n"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+    </section>
+  </div>
+</div>
+
+<script src="js/reveal.js"></script>
+
+<script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    hash: true,
+    controls: false,
+    chart: {
+      defaults: {
+        global: {
+          title: {
+            fontFamily: "'Merriweather' serif",
+            fontColor: "#000"
+          },
+          tooltip: {
+            bodyFontSize: 30,
+            titleFontSize: 30,
+            backgroundColor: "#000"
+          },
+          legend: {
+            labels: {
+              fontColor: "#000",
+              fontSize: 30
+            },
+          },
+        },
+        scale: {
+          scaleLabel: {
+            fontColor: "#000",
+            fontSize: 30
+          },
+          gridLines: {
+            color: "#0003",
+            zeroLineColor: "#000"
+          },
+          ticks: {
+            fontColor: "#000",
+            fontSize: 30
+          },
+        }
+      },
+      line: {
+        borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"],
+        borderDash: [[5, 10], [0, 0]]
+      },
+      bar: {
+        backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]
+      },
+      pie: {
+        backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]]
+      },
+      radar: {
+        borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]
+      },
+    },
+    dependencies: [
+      { src: 'plugin/markdown/marked.js' },
+      { src: 'plugin/markdown/markdown.js' },
+      { src: 'plugin/highlight/highlight.js' },
+      { src: 'plugin/chart/Chart.min.js' },
+      { src: 'plugin/chart/csv2chart.js' },
+      { src: 'plugin/live-coding/live-coding.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  });
+
+  Reveal.addEventListener('slidechanged', function(event) {
+    Array.from(event.currentSlide.querySelectorAll('video')).forEach((video) => {
+      video.currentTime = 0;
+      video.play();
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href$=".txt"]');
+
+    if (!link) return;
+
+    const section = link.closest('section[data-markdown]');
+
+    if (!section) return;
+
+    const editor = section.querySelector('.liveCoding[contenteditable]');
+
+    if (!editor) return;
+
+    fetch(link.href).then(result => result.text()).then((result) => {
+      editor.textContent = result;
+
+      const keyupEvent = document.createEvent('HTMLEvents');
+      keyupEvent.initEvent('keyup', false, true);
+      editor.dispatchEvent(keyupEvent);
+
+      const focusoutEvent = document.createEvent('HTMLEvents');
+      focusoutEvent.initEvent('focusout', false, true);
+      editor.dispatchEvent(focusoutEvent);
+    });
+
+    e.preventDefault();
+  }, true);
+
+  document.addEventListener('keydown', (e) => {
+    const editor = e.target.closest('.liveCoding');
+
+    if (!editor || e.key !== 'Tab') {
+      return;
+    }
+
+    var doc = editor.ownerDocument.defaultView;
+    var sel = doc.getSelection();
+    var range = sel.getRangeAt(0);
+
+    var tabNode = document.createTextNode("  ");
+    range.insertNode(tabNode);
+
+    range.setStartAfter(tabNode);
+    range.setEndAfter(tabNode);
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    const keyupEvent = document.createEvent('HTMLEvents');
+    keyupEvent.initEvent('keyup', false, true);
+    editor.dispatchEvent(keyupEvent);
+
+    const focusoutEvent = document.createEvent('HTMLEvents');
+    focusoutEvent.initEvent('focusout', false, true);
+    editor.dispatchEvent(focusoutEvent);
+
+    e.preventDefault();
+  }, true);
+
+  if (window.CSS && CSS.registerProperty) {
+    CSS.registerProperty({
+      name: '--multiply',
+      syntax: '<number>',
+      inherits: false,
+      initialValue: '0'
+    });
+  }
+
+  if (window.CSS && CSS.layoutWorklet) {
+    CSS.layoutWorklet.addModule('demos/masonry.js');
+    CSS.layoutWorklet.addModule('demos/random.js');
+  }
+</script>
+</body>
+</html>
